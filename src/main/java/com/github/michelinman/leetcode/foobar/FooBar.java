@@ -1,4 +1,4 @@
-package com.github.michelinman.leetcode;
+package com.github.michelinman.leetcode.foobar;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
