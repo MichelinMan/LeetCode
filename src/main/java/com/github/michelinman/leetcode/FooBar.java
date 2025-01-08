@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class FooBar {
-    private int n;
+    private final int n;
     private final Lock lock = new ReentrantLock();
     private final Condition fooCondition = lock.newCondition();
     private final Condition barCondition = lock.newCondition();
