@@ -1,4 +1,4 @@
-package com.github.michelinman.leetcode.foobar;
+package com.github.michelinman.leetcode.concurrency.fooBar;
 
 public class FooBarRunner {
 
