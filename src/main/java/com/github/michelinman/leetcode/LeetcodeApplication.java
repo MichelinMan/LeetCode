@@ -3,13 +3,15 @@ package com.github.michelinman.leetcode;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 import static com.github.michelinman.leetcode.concurrency.boundedBlockingQueue.BoundedBlockingQueueRunner.runBoundedBlockingQueue;
 import static com.github.michelinman.leetcode.concurrency.buildingH2O.H2ORunner.runH2O;
 import static com.github.michelinman.leetcode.concurrency.fizzBuzz.FizzBuzzRunner.runFizzBuzz;
 import static com.github.michelinman.leetcode.concurrency.printFooBarAlternately.FooBarRunner.runFooBar;
 import static com.github.michelinman.leetcode.concurrency.printInOrder.FooRunner.runFoo;
-import static com.github.michelinman.leetcode.concurrency.trafficLight.TrafficLightRunner.runTrafficLight;
 import static com.github.michelinman.leetcode.concurrency.printZeroEvenOdd.ZeroEvenOddRunner.runZeroEvenOdd;
+import static com.github.michelinman.leetcode.concurrency.trafficLight.TrafficLightRunner.*;
 
 @SpringBootApplication
 public class LeetCodeApplication {
@@ -18,13 +20,16 @@ public class LeetCodeApplication {
         SpringApplication.run(LeetCodeApplication.class, args);
 
 //        runFooBar(2);
-        runZeroEvenOdd(5);
+//        runZeroEvenOdd(5);
 //        runFoo(new int[]{1, 3, 2});
-//        runH2O();
+//        runH2O("OOHHHH");
 //        runFizzBuzz(15);
-//        runBoundedBlockingQueue(5);
-//        runTrafficLight();
-    }
+//        runBoundedBlockingQueue(1, 1, 1,
+//                new String[]{"enqueue","dequeue","dequeue","enqueue","enqueue","enqueue","enqueue","dequeue"},
+//                new int[][]{{2}, {1}, {}, {}, {0}, {2}, {3}, {4}, {}});
+        runTrafficLightExample1();
+        runTrafficLightExample2();
 
+    }
 
 }

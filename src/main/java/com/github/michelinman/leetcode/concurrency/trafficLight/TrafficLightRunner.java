@@ -1,43 +1,39 @@
 package com.github.michelinman.leetcode.concurrency.trafficLight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TrafficLightRunner {
-    public static void runTrafficLight() {
+    public static List<String> runTrafficLight(int[] cars, int[] directions, int[] arrivalTimes) {
         TrafficLight trafficLight = new TrafficLight();
+        List<String> output = new ArrayList<>();
 
-        // Example 1
+        for (int i = 0; i < cars.length; i++) {
+            int carId = cars[i];
+            int direction = directions[i];
+            int arrivalTime = arrivalTimes[i];
+
+            trafficLight.carArrived(arrivalTime, carId, direction,
+                    () -> output.add("Traffic Light On Road " + (direction <= 2 ? "A" : "B") + " Is Green"),
+                    () -> output.add("Car " + carId + " Has Passed Road " + (direction <= 2 ? "A" : "B") + " In Direction " + direction));
+        }
+
+        return output;
+    }
+
+    public static void runTrafficLightExample1() {
         System.out.println("Example 1:");
-        trafficLight.carArrived(1, 1, 2,
-                () -> System.out.println("Traffic Light On Road A Is Green"),
-                () -> System.out.println("Car 1 Has Passed Road A In Direction 2"));
-        trafficLight.carArrived(3, 1, 1,
-                () -> System.out.println("Traffic Light On Road A Is Green"),
-                () -> System.out.println("Car 3 Has Passed Road A In Direction 1"));
-        trafficLight.carArrived(5, 1, 2,
-                () -> System.out.println("Traffic Light On Road A Is Green"),
-                () -> System.out.println("Car 5 Has Passed Road A In Direction 2"));
-        trafficLight.carArrived(2, 2, 4,
-                () -> System.out.println("Traffic Light On Road B Is Green"),
-                () -> System.out.println("Car 2 Has Passed Road B In Direction 4"));
-        trafficLight.carArrived(4, 2, 3,
-                () -> System.out.println("Traffic Light On Road B Is Green"),
-                () -> System.out.println("Car 4 Has Passed Road B In Direction 3"));
+        int[] cars = {1, 3, 5, 2, 4};
+        int[] directions = {2, 1, 2, 4, 3};
+        int[] arrivalTimes = {10, 20, 30, 40, 50};
+        runTrafficLight(cars, directions, arrivalTimes).forEach(System.out::println);
+    }
 
-        // Example 2
-        System.out.println("\nExample 2:");
-        trafficLight.carArrived(1, 1, 2,
-                () -> System.out.println("Traffic Light On Road A Is Green"),
-                () -> System.out.println("Car 1 Has Passed Road A In Direction 2"));
-        trafficLight.carArrived(2, 2, 4,
-                () -> System.out.println("Traffic Light On Road B Is Green"),
-                () -> System.out.println("Car 2 Has Passed Road B In Direction 4"));
-        trafficLight.carArrived(3, 2, 3,
-                () -> System.out.println("Traffic Light On Road B Is Green"),
-                () -> System.out.println("Car 3 Has Passed Road B In Direction 3"));
-        trafficLight.carArrived(5, 1, 1,
-                () -> System.out.println("Traffic Light On Road A Is Green"),
-                () -> System.out.println("Car 5 Has Passed Road A In Direction 1"));
-        trafficLight.carArrived(4, 2, 3,
-                () -> System.out.println("Traffic Light On Road B Is Green"),
-                () -> System.out.println("Car 4 Has Passed Road B In Direction 3"));
+    public static void runTrafficLightExample2() {
+        System.out.println("Example 2:");
+        int[] cars = new int[]{1, 2, 3, 4, 5};
+        int[] directions = new int[]{2, 4, 3, 3, 1};
+        int[] arrivalTimes = new int[]{10, 20, 30, 40, 40};
+        runTrafficLight(cars, directions, arrivalTimes).forEach(System.out::println);
     }
 }
