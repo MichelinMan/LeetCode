@@ -8,6 +8,7 @@ import static com.github.michelinman.leetcode.concurrency.buildingH2O.H2ORunner.
 import static com.github.michelinman.leetcode.concurrency.fizzBuzz.FizzBuzzRunner.runFizzBuzz;
 import static com.github.michelinman.leetcode.concurrency.fooBar.FooBarRunner.runFooBar;
 import static com.github.michelinman.leetcode.concurrency.printInOrder.FooRunner.runFoo;
+import static com.github.michelinman.leetcode.concurrency.trafficLight.TrafficLightRunner.runTrafficLight;
 import static com.github.michelinman.leetcode.concurrency.zeroEvenOdd.ZeroEvenOddRunner.runZeroEvenOdd;
 
 @SpringBootApplication
@@ -21,7 +22,9 @@ public class LeetCodeApplication {
 //        runFoo();
 //        runH2O();
 //        runFizzBuzz(15);
-        runBoundedBlockingQueue(5);
+//        runBoundedBlockingQueue(5);
+        runTrafficLight();
     }
+
 
 }
