@@ -1,4 +1,4 @@
-package com.github.michelinman.leetcode.concurrency.fooBar;
+package com.github.michelinman.leetcode.concurrency.printFooBarAlternately;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

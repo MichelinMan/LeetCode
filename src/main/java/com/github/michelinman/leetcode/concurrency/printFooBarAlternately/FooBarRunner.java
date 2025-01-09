@@ -1,9 +1,8 @@
-package com.github.michelinman.leetcode.concurrency.fooBar;
+package com.github.michelinman.leetcode.concurrency.printFooBarAlternately;
 
 public class FooBarRunner {
 
-    public static void runFooBar() {
-        int n = 2; // Example value for n
+    public static void runFooBar(int n) {
         FooBar fooBar = new FooBar(n);
 
         Thread threadA = new Thread(() -> {

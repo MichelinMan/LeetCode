@@ -1,4 +1,4 @@
-package com.github.michelinman.leetcode.concurrency.fooBar;
+package com.github.michelinman.leetcode.concurrency.printFooBarAlternately;
 
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.atomic.AtomicInteger;
