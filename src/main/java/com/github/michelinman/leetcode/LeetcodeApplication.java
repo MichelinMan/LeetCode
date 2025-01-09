@@ -3,6 +3,7 @@ package com.github.michelinman.leetcode;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import static com.github.michelinman.leetcode.concurrency.buildingH2O.H2ORunner.runH2O;
 import static com.github.michelinman.leetcode.concurrency.fooBar.FooBarRunner.runFooBar;
 import static com.github.michelinman.leetcode.concurrency.printInOrder.FooRunner.runFoo;
 
@@ -14,7 +15,8 @@ public class LeetCodeApplication {
 
 //        runFooBar();
 //        runZeroEvenOdd(5);
-        runFoo();
+//        runFoo();
+        runH2O();
     }
 
 }
