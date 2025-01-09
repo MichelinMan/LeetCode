@@ -1,60 +1,55 @@
 package com.github.michelinman.leetcode.concurrency.htmlParser;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-    interface HtmlParser {
-        List<String> getUrls(String url);
+// Interface for HTML parser
+interface HtmlParser {
+    // Method to get URLs from a given URL
+    List<String> getUrls(String url);
+}
+
+class Solution {
+    // Method to start crawling from the given start URL
+    public List<String> crawl(String startUrl, HtmlParser htmlParser) {
+        // Extract the hostname from the start URL
+        String hostname = getHostname(startUrl);
+
+        // Set to keep track of visited URLs
+        Set<String> visited = ConcurrentHashMap.newKeySet();
+        visited.add(startUrl);
+
+        // Start crawling and collect the results into a list
+        return crawl(startUrl, htmlParser, hostname, visited).collect(Collectors.toList());
     }
 
-    class Solution {
-        private String getHostName(String url) {
-            try {
-                return new URI(url).getHost();
-            } catch (URISyntaxException e) {
-                throw new IllegalArgumentException("Invalid URL: " + url);
-            }
-        }
+    // Recursive method to crawl URLs
+    private Stream<String> crawl(String startUrl, HtmlParser htmlParser, String hostname, Set<String> visited) {
+        // Get URLs from the current URL, filter them by hostname and visited status, and recursively crawl them
+        Stream<String> stream = htmlParser.getUrls(startUrl)
+                .parallelStream()
+                .filter(url -> isSameHostname(url, hostname))
+                .filter(visited::add)
+                .flatMap(url -> crawl(url, htmlParser, hostname, visited));
 
-        public List<String> crawl(String startUrl, HtmlParser htmlParser) {
-            String startHostName = getHostName(startUrl);
-            Set<String> visited = ConcurrentHashMap.newKeySet();
-            ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
-            ExecutorService executor = Executors.newFixedThreadPool(10);
-
-            visited.add(startUrl);
-            queue.add(startUrl);
-
-            List<Future<?>> futures = new ArrayList<>();
-
-            while (!queue.isEmpty()) {
-                String currentUrl = queue.poll();
-                if (currentUrl == null) continue;
-
-                futures.add(executor.submit(() -> {
-                    List<String> urls = htmlParser.getUrls(currentUrl);
-                    for (String url : urls) {
-                        if (getHostName(url).equals(startHostName) && visited.add(url)) {
-                            queue.add(url);
-                        }
-                    }
-                }));
-            }
-
-            for (Future<?> future : futures) {
-                try {
-                    future.get();
-                } catch (InterruptedException | ExecutionException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-
-            executor.shutdown();
-
-            return new ArrayList<>(visited);
-        }
+        // Concatenate the current URL with the stream of crawled URLs
+        return Stream.concat(Stream.of(startUrl), stream);
     }
+
+    // Helper method to extract the hostname from a URL
+    private String getHostname(String url) {
+        int idx = url.indexOf('/', 7);
+        return (idx != -1) ? url.substring(0, idx) : url;
+    }
+
+    // Helper method to check if a URL has the same hostname
+    private boolean isSameHostname(String url, String hostname) {
+        if (!url.startsWith(hostname)) {
+            return false;
+        }
+        return url.length() == hostname.length() || url.charAt(hostname.length()) == '/';
+    }
+}
