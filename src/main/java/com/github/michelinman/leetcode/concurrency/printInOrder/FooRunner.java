@@ -29,6 +29,7 @@ public class FooRunner {
             }
         });
 
+        // start the threads in the order specified by the input array
         for (int num : nums) {
             switch (num) {
                 case 1:

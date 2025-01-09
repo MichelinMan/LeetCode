@@ -1,7 +1,7 @@
 package com.github.michelinman.leetcode.concurrency.printInOrder;
 
 import org.junit.jupiter.api.Test;
-import java.util.concurrent.CountDownLatch;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FooTest {
@@ -10,14 +10,10 @@ class FooTest {
     void testFooOrder() throws InterruptedException {
         Foo foo = new Foo();
         StringBuilder output = new StringBuilder();
-        CountDownLatch latch = new CountDownLatch(3);
 
         Thread threadA = new Thread(() -> {
             try {
-                foo.first(() -> {
-                    output.append("first");
-                    latch.countDown();
-                });
+                foo.first(() -> output.append("first"));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -25,10 +21,7 @@ class FooTest {
 
         Thread threadB = new Thread(() -> {
             try {
-                foo.second(() -> {
-                    output.append("second");
-                    latch.countDown();
-                });
+                foo.second(() -> output.append("second"));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -36,20 +29,21 @@ class FooTest {
 
         Thread threadC = new Thread(() -> {
             try {
-                foo.third(() -> {
-                    output.append("third");
-                    latch.countDown();
-                });
+                foo.third(() -> output.append("third"));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         });
 
-        threadA.start();
-        threadB.start();
+        // start the threads not in the expected order
         threadC.start();
+        threadB.start();
+        threadA.start();
 
-        latch.await(); // Wait for all threads to complete
+        // Wait for all threads to finish
+        threadA.join();
+        threadB.join();
+        threadC.join();
 
         assertEquals("firstsecondthird", output.toString());
     }

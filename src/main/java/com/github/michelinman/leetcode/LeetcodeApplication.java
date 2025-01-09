@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 
 import static com.github.michelinman.leetcode.concurrency.boundedBlockingQueue.BoundedBlockingQueueRunner.runBoundedBlockingQueue;
+import static com.github.michelinman.leetcode.concurrency.boundedBlockingQueue.BoundedBlockingQueueRunner.runBoundedBlockingQueueExamples;
 import static com.github.michelinman.leetcode.concurrency.buildingH2O.H2ORunner.runH2O;
 import static com.github.michelinman.leetcode.concurrency.fizzBuzz.FizzBuzzRunner.runFizzBuzz;
 import static com.github.michelinman.leetcode.concurrency.printFooBarAlternately.FooBarRunner.runFooBar;
@@ -21,14 +22,11 @@ public class LeetCodeApplication {
 
 //        runFooBar(2);
 //        runZeroEvenOdd(5);
-//        runFoo(new int[]{1, 3, 2});
+        runFoo(new int[]{1, 3, 2});
 //        runH2O("OOHHHH");
 //        runFizzBuzz(15);
-//        runBoundedBlockingQueue(1, 1, 1,
-//                new String[]{"enqueue","dequeue","dequeue","enqueue","enqueue","enqueue","enqueue","dequeue"},
-//                new int[][]{{2}, {1}, {}, {}, {0}, {2}, {3}, {4}, {}});
-        runTrafficLightExample1();
-        runTrafficLightExample2();
+//        runBoundedBlockingQueueExamples();
+//        runTrafficLightExamples();
 
     }
 
