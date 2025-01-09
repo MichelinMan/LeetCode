@@ -25,8 +25,10 @@ class FooBarTest {
             }
         });
 
+        // Start the threads
         threadA.start();
         threadB.start();
+        // Wait for the threads to finish
         threadA.join();
         threadB.join();
 
@@ -52,8 +54,10 @@ class FooBarTest {
             }
         });
 
+        // Start the threads
         threadA.start();
         threadB.start();
+        // Wait for the threads to finish
         threadA.join();
         threadB.join();
 
@@ -79,8 +83,10 @@ class FooBarTest {
             }
         });
 
+        // Start the threads
         threadA.start();
         threadB.start();
+        // Wait for the threads to finish
         threadA.join();
         threadB.join();
 
@@ -107,8 +113,10 @@ class FooBarTest {
             }
         });
 
+        // Start the threads
         threadA.start();
         threadB.start();
+        // Wait for the threads to finish
         threadA.join();
         threadB.join();
 
