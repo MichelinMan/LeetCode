@@ -1,4 +1,4 @@
-package com.github.michelinman.leetcode.concurrency.zeroEvenOdd;
+package com.github.michelinman.leetcode.concurrency.printZeroEvenOdd;
 
 import org.junit.jupiter.api.Test;
 
