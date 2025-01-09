@@ -19,11 +19,11 @@ public class LeetCodeApplication {
 
 //        runFooBar();
 //        runZeroEvenOdd(5);
-//        runFoo();
+        runFoo(new int[]{1, 3, 2});
 //        runH2O();
 //        runFizzBuzz(15);
 //        runBoundedBlockingQueue(5);
-        runTrafficLight();
+//        runTrafficLight();
     }
 
 

@@ -2,7 +2,7 @@ package com.github.michelinman.leetcode.concurrency.printInOrder;
 
 public class FooRunner {
 
-    public static void runFoo() {
+    public static void runFoo(int[] nums) {
         Foo foo = new Foo();
 
         Thread threadA = new Thread(() -> {
@@ -29,8 +29,18 @@ public class FooRunner {
             }
         });
 
-        threadA.start();
-        threadB.start();
-        threadC.start();
+        for (int num : nums) {
+            switch (num) {
+                case 1:
+                    threadA.start();
+                    break;
+                case 2:
+                    threadB.start();
+                    break;
+                case 3:
+                    threadC.start();
+                    break;
+            }
+        }
     }
 }
