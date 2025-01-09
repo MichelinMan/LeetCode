@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import static com.github.michelinman.leetcode.concurrency.buildingH2O.H2ORunner.runH2O;
+import static com.github.michelinman.leetcode.concurrency.fizzBuzz.FizzBuzzRunner.runFizzBuzz;
 import static com.github.michelinman.leetcode.concurrency.fooBar.FooBarRunner.runFooBar;
 import static com.github.michelinman.leetcode.concurrency.printInOrder.FooRunner.runFoo;
+import static com.github.michelinman.leetcode.concurrency.zeroEvenOdd.ZeroEvenOddRunner.runZeroEvenOdd;
 
 @SpringBootApplication
 public class LeetCodeApplication {
@@ -16,7 +18,8 @@ public class LeetCodeApplication {
 //        runFooBar();
 //        runZeroEvenOdd(5);
 //        runFoo();
-        runH2O();
+//        runH2O();
+        runFizzBuzz(15);
     }
 
 }
