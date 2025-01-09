@@ -2,7 +2,7 @@ package com.github.michelinman.leetcode.concurrency.fooBar;
 
 public class FooBarRunner {
 
-    public static void foobar() {
+    public static void runFooBar() {
         int n = 2; // Example value for n
         FooBar fooBar = new FooBar(n);
 
