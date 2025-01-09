@@ -21,19 +21,17 @@ public class TrafficLightRunner {
         return output;
     }
 
-    public static void runTrafficLightExample1() {
+    public static void runTrafficLightExamples() {
         System.out.println("Example 1:");
         int[] cars = {1, 3, 5, 2, 4};
         int[] directions = {2, 1, 2, 4, 3};
         int[] arrivalTimes = {10, 20, 30, 40, 50};
         runTrafficLight(cars, directions, arrivalTimes).forEach(System.out::println);
-    }
 
-    public static void runTrafficLightExample2() {
         System.out.println("Example 2:");
-        int[] cars = new int[]{1, 2, 3, 4, 5};
-        int[] directions = new int[]{2, 4, 3, 3, 1};
-        int[] arrivalTimes = new int[]{10, 20, 30, 40, 40};
+        cars = new int[]{1, 2, 3, 4, 5};
+        directions = new int[]{2, 4, 3, 3, 1};
+        arrivalTimes = new int[]{10, 20, 30, 40, 40};
         runTrafficLight(cars, directions, arrivalTimes).forEach(System.out::println);
     }
 }
