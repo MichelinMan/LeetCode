@@ -6,7 +6,6 @@ public class ZeroEvenOddRunner {
 
     public static void runZeroEvenOdd(int n) {
         ZeroEvenOdd zeroEvenOdd = new ZeroEvenOdd(n);
-
         IntConsumer printNumber = System.out::print;
 
         Thread threadZero = new Thread(() -> {
