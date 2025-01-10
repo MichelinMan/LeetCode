@@ -6,9 +6,12 @@ import java.util.function.IntConsumer;
 public class FizzBuzz {
     private final int n;
     private int current = 1;
+
+    // semFizz, semBuzz, and semFizzBuzz are initialized with 0 permits, meaning the threads calling these methods will block until a permit is available
     private final Semaphore semFizz = new Semaphore(0);
     private final Semaphore semBuzz = new Semaphore(0);
     private final Semaphore semFizzBuzz = new Semaphore(0);
+    // semNumber is initialized with 1 permit, allowing the number method to run first.
     private final Semaphore semNumber = new Semaphore(1);
 
     public FizzBuzz(int n) {
@@ -59,6 +62,7 @@ public class FizzBuzz {
         }
     }
 
+    // releases the next semaphore based on the acceptance criteria in the problem statement
     private void releaseNext() {
         current++;
         if (current > n) {
