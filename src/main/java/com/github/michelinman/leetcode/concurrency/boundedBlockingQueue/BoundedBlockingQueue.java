@@ -59,4 +59,18 @@ public class BoundedBlockingQueue {
             lock.unlock();
         }
     }
+
+    @Override
+    public String toString() {
+        lock.lock();
+        try {
+            return "BoundedBlockingQueue{" +
+                    "queue=" + queue +
+                    ", capacity=" + capacity +
+                    ", size=" + queue.size() +
+                    '}';
+        } finally {
+            lock.unlock();
+        }
+    }
 }
