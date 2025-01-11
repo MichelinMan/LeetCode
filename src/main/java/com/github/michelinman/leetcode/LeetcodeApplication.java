@@ -29,7 +29,7 @@ public class LeetCodeApplication {
 //        runTrafficLightExamples();
 //        runDinningPhilosophers(5);
 //        runHtmlParserExamples();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1_000; i++) {
             runBoundedBlockingQueueExamples();
         }
     }
