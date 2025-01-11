@@ -25,7 +25,7 @@ public class LeetCodeApplication {
 //        runH2O("OOHHHH");
 //        runFizzBuzz(15);
 //        runTrafficLightExamples();
-        runDinningPhilosophers(5);
+        runDinningPhilosophers(1);
 //        runHtmlParserExamples();
 //        for (int i = 0; i < 10; i++) {
 //            runBoundedBlockingQueueExamples();
