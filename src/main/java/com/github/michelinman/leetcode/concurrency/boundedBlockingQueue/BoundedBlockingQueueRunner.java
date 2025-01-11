@@ -48,13 +48,13 @@ public class BoundedBlockingQueueRunner {
     }
 
     public static void runBoundedBlockingQueueExamples() throws InterruptedException {
-//        System.out.println("Example 1:");
-//        runBoundedBlockingQueue(2, 1, 1,
-//                List.of("enqueue 1", "dequeue", "dequeue", "enqueue 0", "enqueue 2", "enqueue 3", "enqueue 4", "dequeue")); // [1, 0, 2, 2]
-//        System.out.println();
+        System.out.println("Example 1:");
+        runBoundedBlockingQueue(2, 1, 1,
+                List.of("enqueue 1", "dequeue", "dequeue", "enqueue 0", "enqueue 2", "enqueue 3", "enqueue 4", "dequeue")); // [1, 0, 2, 2]
+        System.out.println();
 
         System.out.println("Example 2:");
-        runBoundedBlockingQueue(3, 3, 4,
+        runBoundedBlockingQueue(3, 30, 40,
                 List.of("enqueue 1", "enqueue 0", "enqueue 2", "dequeue", "dequeue", "dequeue", "enqueue 3")); // [1, 0, 2, 1]
         System.out.println();
     }
