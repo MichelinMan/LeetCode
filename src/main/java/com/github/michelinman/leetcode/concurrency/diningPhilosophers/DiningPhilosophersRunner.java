@@ -44,10 +44,10 @@ public class DiningPhilosophersRunner {
 
         // Retrieve and print the logged actions in the specified format
         List<int[]> actions = diningPhilosophers.getActions();
-        System.out.print("Output: [");
+        System.out.println("Output: [");
         for (int i = 0; i < actions.size(); i++) {
             int[] action = actions.get(i);
-            System.out.print("[" + action[0] + "," + action[1] + "," + action[2] + "]");
+            System.out.println("[" + action[0] + "," + action[1] + "," + action[2] + "]");
             if (i < actions.size() - 1) {
                 System.out.print(",");
             }
