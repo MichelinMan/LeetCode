@@ -16,10 +16,10 @@ public class BoundedBlockingQueueRunner {
         BoundedBlockingQueue queue = new BoundedBlockingQueue(capacity);
         ExecutorService producerPool = Executors.newFixedThreadPool(numProducers);
         ExecutorService consumerPool = Executors.newFixedThreadPool(numConsumers);
-        CountDownLatch latch = new CountDownLatch(sequence.size());
-        Lock lock = new ReentrantLock();
-        Condition notFull = lock.newCondition();
-        Condition notEmpty = lock.newCondition();
+        CountDownLatch latch = new CountDownLatch(sequence.size()); // Create a latch to wait for all operations to complete
+        Lock lock = new ReentrantLock(); // Create a reentrant lock for synchronization
+        Condition notFull = lock.newCondition(); // Condition to wait when the queue is full
+        Condition notEmpty = lock.newCondition(); // Condition to wait when the queue is empty
 
         for (String operation : sequence) {
             if (operation.startsWith("enqueue")) {
@@ -31,9 +31,9 @@ public class BoundedBlockingQueueRunner {
                             notFull.await();
                         }
                         queue.enqueue(value);
-                        notEmpty.signal();
+                        notEmpty.signal(); // Signal that the queue is not empty
                     } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        Thread.currentThread().interrupt(); // Restore the interrupted status
                     } finally {
                         latch.countDown();
                         lock.unlock();
@@ -49,7 +49,7 @@ public class BoundedBlockingQueueRunner {
                         System.out.println("Dequeued: " + queue.dequeue());
                         notFull.signal();
                     } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        Thread.currentThread().interrupt(); // Restore the interrupted status
                     } finally {
                         latch.countDown();
                         lock.unlock();
@@ -58,7 +58,7 @@ public class BoundedBlockingQueueRunner {
             }
         }
 
-        latch.await();
+        latch.await(); // Wait for all operations to complete
         producerPool.shutdown();
         consumerPool.shutdown();
 
