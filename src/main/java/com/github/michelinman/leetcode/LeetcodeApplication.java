@@ -19,17 +19,17 @@ public class LeetCodeApplication {
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(LeetCodeApplication.class, args);
 
-//        runFooBar(10);
-//        runZeroEvenOdd(5);
-//        runFoo(new int[]{1, 3, 2});
-//        runH2O("OOHHHH");
-//        runFizzBuzz(15);
-//        runTrafficLightExamples();
+        runFooBar(10);
+        runZeroEvenOdd(5);
+        runFoo(new int[]{1, 3, 2});
+        runH2O("OOHHHH");
+        runFizzBuzz(15);
+        runTrafficLightExamples();
         runDinningPhilosophers(1);
-//        runHtmlParserExamples();
-//        for (int i = 0; i < 10; i++) {
-//            runBoundedBlockingQueueExamples();
-//        }
+        runHtmlParserExamples();
+        for (int i = 0; i < 10; i++) {
+            runBoundedBlockingQueueExamples();
+        }
     }
 }
 
